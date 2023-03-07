@@ -30,60 +30,59 @@
     <!-- (1): CREATE Task -->
     <!-- -->
     <form action="/quotes" method="POST">
-        <form action="/quotes" method="POST">
-            <div class="mb-3">
-              <label for="name" class="form-label">Toy Name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="name"
-                name="name"
-                placeholder="Please enter toy name..."
-              />
-            </div>
+      <div class="mb-3">
+        <label for="name" class="form-label">Toy Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+          placeholder="Please enter toy name..."
+        />
+      </div>
 
-            <div class="mb-3">
-              <label for="description" class="form-label">Description</label>
-              <textarea
-                class="form-control"
-                id="description"
-                name="description"
-                rows="3"
-              ></textarea>
-            </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          class="form-control"
+          id="description"
+          name="description"
+          rows="3"
+        ></textarea>
+      </div>
 
-            <div class="mb-3">
-              <label for="price" class="form-label">Price</label>
-              <input
-                type="number"
-                class="form-control"
-                id="price"
-                name="price"
-                placeholder="Please enter toy name..."
-                min="10000"
-                max="5000000"
-                step="1000"
-              />
-            </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input
+          type="number"
+          class="form-control"
+          id="price"
+          name="price"
+          placeholder="Please enter toy name..."
+          min="10000"
+          max="5000000"
+          step="1000"
+        />
+      </div>
 
-            <!-- <input type="text" placeholder="description" name="description" /> -->
-            <button type="submit" class="btn btn-success">Submit</button>
+      <!-- <input type="text" placeholder="description" name="description" /> -->
+      <button type="submit" class="btn btn-success">Submit</button>
     </form>
     <!-- -->
 
     <!-- (2) READ Task -->
     <h2>READ: All Quotes in Database</h2>
     <ul class="quotes">
-        <!-- Loop through quotes -->
-        <% for(var i = 0; i < quotes.length; i++) {%>
-        <li class="quote">
-          <!-- Output name from the iterated quote object -->
-          <div>Toy Name: <span><%= quotes[i].name %></span></div>
-          <div>Description: <span><%= quotes[i].description %></span></div>
-          <!-- Output quote from the iterated quote object -->
-          <div>Price: <span><%= quotes[i].price %></span></div>
-        </li>
-        <% } %>
-      </ul>
+      <!-- Loop through quotes -->
+      <% for(var i = 0; i < quotes.length; i++) {%>
+      <li class="quote">
+        <!-- Output name from the iterated quote object -->
+        <div>Toy Name: <span><%= quotes[i].name %></span></div>
+        <div>Description: <span><%= quotes[i].description %></span></div>
+        <!-- Output quote from the iterated quote object -->
+        <div>Price: <span><%= quotes[i].price %></span></div>
+      </li>
+      <% } %>
+    </ul>
   </body>
 </html>
