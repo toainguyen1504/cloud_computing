@@ -13,68 +13,142 @@
           rgba(228, 255, 228, 0.774)
         );
       }
+
+      .container {
+        margin: 30px 50px;
+      }
+
+      .mb-3 {
+        margin: 0 20px;
+      }
+
+      .mb20 {
+        margin-bottom: 20px;
+      }
+
+      input,
+      textarea {
+        width: 300px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 2px solid red;
+        border-radius: 4px;
+      }
+
+      .btn.btn-success {
+        background: rgb(16, 128, 16);
+        padding: 10px 20px;
+        border: 0;
+        color: white;
+        width: 300px;
+        border-radius: 10px;
+        margin: 20px;
+      }
+
+      .btn:hover {
+        cursor: pointer;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: auto auto;
+        /* background-color: #2196f3; */
+        padding: 10px;
+      }
+
+      .grid-item {
+        background-color: rgba(255, 255, 255, 0.245);
+        border: 1px solid rgba(46, 172, 240, 0.8);
+        padding: 20px;
+        font-size: 30px;
+        margin: 10px;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 50px;
+        text-transform: uppercase;
+        color: rgb(6, 68, 150);
+      }
+
+      /* scroll */
+      .scrollbar {
+        height: 500px;
+        overflow: scroll;
+      }
+
     </style>
   </head>
 
   <body>
-    <h1>CREATE: May Node and Express be with you.</h1>
+    <div class="container toy my-5">
+      <h1 class="title-web">Toy manager</h1>
+      <div class="grid-container">
+        <div class="grid-item border border-success px-5 py-5">
+          <h3 class="mb-3 mb20">CREATE</h3>
+          <!-- (1): CREATE Task -->
+          <!-- -->
+          <form action="/quotes" method="POST">
+            <div class="mb-3">
+              <label for="name" class="form-label">Toy Name</label> <br />
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                placeholder="Please enter toy name..."
+              />
+            </div>
 
-    <!-- (1): CREATE Task -->
-    <!-- -->
-    <form action="/quotes" method="POST">
-      <div class="mb-3">
-        <label for="name" class="form-label">Toy Name</label>
-        <input
-          type="text"
-          class="form-control"
-          id="name"
-          name="name"
-          placeholder="Please enter toy name..."
-        />
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <br />
+              <textarea
+                class="form-control"
+                id="description"
+                name="description"
+                rows="3"
+              ></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="price" class="form-label">Price</label> <br />
+              <input
+                type="number"
+                class="form-control"
+                id="price"
+                name="price"
+                placeholder="Please enter toy name..."
+                min="10000"
+                max="5000000"
+                step="1000"
+              />
+            </div>
+
+            <!-- <input type="text" placeholder="description" name="description" /> -->
+            <button type="submit" class="btn btn-success">Submit</button>
+          </form>
+          <!-- -->
+        </div>
+        <!-- <div class="col-1"></div> -->
+        <!-- (2) READ Task -->
+        <div class="scrollbar grid-item border border-info px-5 py-5">
+          <h3 class="mb-3">READ</h3>
+          <ul class="quotes">
+            <!-- Loop through quotes -->
+            <% for(var i = 0; i < quotes.length; i++) {%>
+            <li class="quote mb20">
+              <!-- Output name from the iterated quote object -->
+              <div>Toy Name: <span><%= quotes[i].name %></span></div>
+              <div>Description: <span><%= quotes[i].description %></span></div>
+              <!-- Output quote from the iterated quote object -->
+              <div>Price: <span><%= quotes[i].price %></span></div>
+            </li>
+            <% } %>
+          </ul>
+        </div>
       </div>
-
-      <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea
-          class="form-control"
-          id="description"
-          name="description"
-          rows="3"
-        ></textarea>
-      </div>
-
-      <div class="mb-3">
-        <label for="price" class="form-label">Price</label>
-        <input
-          type="number"
-          class="form-control"
-          id="price"
-          name="price"
-          placeholder="Please enter toy name..."
-          min="10000"
-          max="5000000"
-          step="1000"
-        />
-      </div>
-
-      <!-- <input type="text" placeholder="description" name="description" /> -->
-      <button type="submit" class="btn btn-success">Submit</button>
-    </form>
-    <!-- -->
-
-    <!-- (2) READ Task -->
-    <h2>READ: All Quotes in Database</h2>
-    <ul class="quotes">
-      <!-- Loop through quotes -->
-      <% for(var i = 0; i < quotes.length; i++) {%>
-      <li class="quote">
-        <!-- Output name from the iterated quote object -->
-        <div>Toy Name: <span><%= quotes[i].name %></span></div>
-        <div>Description: <span><%= quotes[i].description %></span></div>
-        <!-- Output quote from the iterated quote object -->
-        <div>Price: <span><%= quotes[i].price %></span></div>
-      </li>
-      <% } %>
-    </ul>
+    </div>
   </body>
 </html>
